@@ -1,0 +1,109 @@
+Wireshark Packet Capture Report
+
+1. Task Performed
+
+1. Installed Wireshark on the system.
+
+
+2. Started capturing packets on the active network interface (eth0).
+
+
+3. Generated traffic by browsing a website and connecting to external servers.
+
+
+4. Stopped the capture after around one minute.
+
+
+5. Applied protocol filters (TCP, ARP, NTP, ICMP, TLS).
+
+
+6. Identified multiple different protocols within the capture.
+
+
+
+
+---
+
+2. Captured Protocols
+
+From the captured data (as shown in the screenshots), at least three different protocols were observed:
+
+1. TCP (Transmission Control Protocol)
+
+Example: Connection attempts between local host 192.168.235.141 and remote IPs (34.107.243.93, 65.61.137.117).
+
+Packets included handshakes, ACKs, RST/FIN flags, and HTTP/TLS traffic.
+
+
+
+2. ARP (Address Resolution Protocol)
+
+Example: Broadcast queries like “Who has 192.168.235.27? Tell 192.168.235.141” and replies.
+
+This shows local device discovery on the LAN.
+
+
+
+3. NTP (Network Time Protocol)
+
+Example: Communication between 192.168.235.141 and 95.216.144.226.
+
+Used for time synchronization with an external server.
+
+
+
+
+Additionally, ICMP (Router Solicitation) and TLSv1.2 (Application Data) packets were also present.
+
+
+---
+
+3. Observations
+
+TCP traffic:
+
+Connections to remote web servers (port 80 for HTTP and port 443 for HTTPS).
+
+Handshakes and reset/termination packets observed, meaning multiple connection attempts and session closures.
+
+
+ARP traffic:
+
+Normal broadcast traffic inside the virtual/local network environment.
+
+Indicates the machine resolving IP addresses to MAC addresses.
+
+
+NTP traffic:
+
+Time synchronization queries from the local system to external time servers.
+
+
+ICMP traffic:
+
+Router solicitation packet broadcasted to discover gateway/router presence.
+
+
+TLS traffic:
+
+Encrypted HTTPS session packets exchanged with external servers.
+
+
+
+
+---
+
+4. Conclusion
+
+The Wireshark capture shows normal network activity consisting of:
+
+Local ARP discovery,
+
+TCP handshakes with remote servers,
+
+NTP synchronization, and
+
+Secure TLS web traffic.
+
+
+At least three distinct protocols (TCP, ARP, NTP) were clearly identified, fulfilling the task requirements. No suspicious or abnormal packets were detected in the captured timeframe.
